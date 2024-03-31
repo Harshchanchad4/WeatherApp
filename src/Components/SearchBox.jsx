@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 
-const SearchBox = ({ updateInfo }) => {
+const SearchBox = ({ updateInfo , setLoading }) => {
 
     let API_URL = "https://api.openweathermap.org/data/2.5/weather"
 
@@ -53,6 +53,9 @@ const SearchBox = ({ updateInfo }) => {
         event.preventDefault();
         console.log(city);
 
+
+       setLoading(true);
+        
         let newinfo = await getWeatherInfo();
         if (newinfo) {
 
@@ -63,13 +66,15 @@ const SearchBox = ({ updateInfo }) => {
         else{
             setError(true);
         }
+
+        setLoading(false);
        
 
 
     }
     return (
-        <div className='text-center '>
-            <form action="" onSubmit={submitHandler} className='flex justify-center items-center gap-5'>
+        <div className='text-center'>
+            <form action="" onSubmit={submitHandler} className='flex justify-center items-center gap-5 '>
                 <TextField id="city" label="City Name" variant="outlined" required value={city} onChange={handleChange} className='text-white bg-slate-400 rounded-md' />
                 <br />
                 <br />

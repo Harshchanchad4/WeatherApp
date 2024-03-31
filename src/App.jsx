@@ -5,7 +5,7 @@ import Weather from './Components/Weather'
 function App() {
 
   return (
-    <div className='h-screen w-screen flex justify-center items-center flex-col gap-10'> 
+    <div className='h-screen w-screen flex items-center flex-col gap-10'> 
         <Weather />
        
         
