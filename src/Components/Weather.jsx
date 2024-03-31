@@ -7,10 +7,7 @@ import Spinner from './Spinner'
 const Weather = () => {
 
 
-
-  let DAY_URL = "light.jpg"
-
-  let NIGHT_URL = "night.jpg"
+  
   const [loading, setLoading] = useState(false);
 
   const [weatherInfo, setWeatherInfo] = useState({
@@ -50,7 +47,13 @@ const Weather = () => {
   console.log("Is it daytime?", isDay);
 
   return (
-    <div className={`relative flex justify-center items-center gap-10 flex-col w-full h-full bg-no-repeat bg-cover ${isDay ? 'bg-[url(day.jpg)]' : 'bg-[url("night2.jpg")] text-white'}`}>
+    <div className='relative flex justify-center items-center gap-10 flex-col w-full h-full bg-no-repeat bg-cover'
+  style={{
+    backgroundImage: `url(${isDay ? 'day.jpg' : 'night2.jpg'})`,
+    color: isDay ? 'black' : 'white' // Adjust text color based on day/night
+  }}
+>
+
      
 
       <h1 className='text-center m-5 text-3xl font-bold'>Weather</h1>
