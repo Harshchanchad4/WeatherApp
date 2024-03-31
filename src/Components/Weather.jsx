@@ -50,16 +50,8 @@ const Weather = () => {
   console.log("Is it daytime?", isDay);
 
   return (
-
-
-    <div className={`relative flex items-center gap-10 flex-col w-full h-full
-     ${isDay ? 'bg-blue-600' : ' bg-slate-900  darkBlue text-white'}`}>
-      {isDay ? (
-        <div className="absolute inset-0 bg-white bg-opacity-10"></div>
-      ) : (
-        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
-      )}
-
+    <div className={`relative flex justify-center items-center gap-10 flex-col w-full h-full bg-no-repeat bg-cover ${isDay ? 'bg-[url(day.jpg)]' : 'bg-[url("night2.jpg")] text-white'}`}>
+     
 
       <h1 className='text-center m-5 text-3xl font-bold'>Weather</h1>
 
