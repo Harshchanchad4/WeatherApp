@@ -74,13 +74,14 @@ const SearchBox = ({ updateInfo , setLoading }) => {
     }
     return (
         <div className='text-center'>
-            <form action="" onSubmit={submitHandler} className='flex justify-center items-center gap-5 '>
-                <TextField id="city" label="City Name" variant="outlined" required value={city} onChange={handleChange} className='text-white bg-slate-400 rounded-md' />
+            <form action="" onSubmit={submitHandler} className='flex  max-sm:flex-col justify-center items-center gap-2 max-sm:gap-0'>
+
+                <TextField id="city" label="City Name" variant="outlined" required value={city} onChange={handleChange} className='text-white bg-slate-400 rounded-md ' />
                 <br />
                 <br />
 
 
-                <Button variant="contained" type='submit' className='inline'>
+                <Button variant="contained" type='submit' className=''>
                     Search
                 </Button>
 

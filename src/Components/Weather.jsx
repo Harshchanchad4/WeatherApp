@@ -52,8 +52,8 @@ const Weather = () => {
   return (
 
 
-    <div className={`relative flex items-center gap-10 flex-col w-full h-full bg-no-repeat bg-cover
-     ${isDay ? 'bg-[url("light.jpg")]' : 'bg-[url("night.jpg")] text-white'}`}>
+    <div className={`relative flex items-center gap-10 flex-col w-full h-full
+     ${isDay ? 'bg-blue-600' : ' bg-slate-900  darkBlue text-white'}`}>
       {isDay ? (
         <div className="absolute inset-0 bg-white bg-opacity-10"></div>
       ) : (
@@ -61,7 +61,7 @@ const Weather = () => {
       )}
 
 
-      <h1 className='text-center m-5 text-3xl font-bold'>weather</h1>
+      <h1 className='text-center m-5 text-3xl font-bold'>Weather</h1>
 
       <SearchBox updateInfo={updateInfo} setLoading={setLoading} />
       {
