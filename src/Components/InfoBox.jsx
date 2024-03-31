@@ -3,11 +3,13 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { FiSunrise, FiSunset } from "react-icons/fi";
 
 // import winter from '.../public/winter'
 
 import { MdOutlineSevereCold } from "react-icons/md";
 import { FaSun } from "react-icons/fa";
+import { LuSunset } from "react-icons/lu";
 import { IoThunderstormSharp } from "react-icons/io5";
 
 
@@ -27,10 +29,32 @@ const InfoBox = ({ info }) => {
     let RAIN_URL = "monsoon.jpg";
 
 
-   
+
+    function convertUnixTimestamp(unixTimestamp) {
 
 
+        // Convert Unix timestamp to milliseconds
+        let date = new Date(unixTimestamp * 1000);
 
+        // Get hours, minutes, and seconds from the Date object
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
+
+        // Add leading zeros if necessary
+        hours = (hours < 10 ? "0" : "") + hours;
+        minutes = (minutes < 10 ? "0" : "") + minutes;
+        seconds = (seconds < 10 ? "0" : "") + seconds;
+
+        // Format the time as hh:mm:ss
+        let formattedTime = hours + ":" + minutes + ":" + seconds;
+
+        return formattedTime;
+    }
+
+
+    let sunriseTime = convertUnixTimestamp(info.sunRise);
+    let sunsetTime = convertUnixTimestamp(info.sunSet);
 
     return (
 
@@ -67,7 +91,25 @@ const InfoBox = ({ info }) => {
                             <p>The Weather can be describe as  <i>{info.weather}</i> and feels like {info.feelsLike}</p>
 
                         </Typography>
+
+
+                    <div className='flex justify-between items-center'>
+
+                        <div className='flex justify-center items-center'>
+
+                            <FiSunrise className='text-2xl' /> <div className='text-lg'>{sunriseTime}</div>
+                        </div>
+                        <div className='flex justify-center items-center'>
+
+                            <LuSunset className='text-2xl' /> <div className='text-lg'>{sunsetTime}</div>
+                        </div>
+
+                    </div>
+
+
+
                     </CardContent>
+
 
                     {/* <div>{sunsetTime}</div> */}
                 </Card>
