@@ -16,11 +16,13 @@ import { IoThunderstormSharp } from "react-icons/io5";
 
 import { useState } from 'react';
 
-const InfoBox = ({ info }) => {
+const InfoBox = ({ info , loading }) => {
 
 
     // const Intial_image = "https://images.unsplash.com/photo-1672226405717-697c84f48f9e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
+
+    console.log("loading"+loading);
 
     let COLD_URL = "winter.jpg"
 
@@ -40,11 +42,12 @@ const InfoBox = ({ info }) => {
     
         // Format the time using toLocaleTimeString() with the specified timezone
         let formattedTime = date.toLocaleTimeString('en-US', { timeZone: 'UTC' });
-    
-        return formattedTime;
+        return formattedTime === "Invalid Date" ? "--" : formattedTime;  
+
     }
 
     let sunriseTime = convertUnixTimestampWithTimezone(info.sunRise, info.timezone / 60);
+    
     let sunsetTime = convertUnixTimestampWithTimezone(info.sunSet, info.timezone / 60);
     console.log(sunriseTime); // Output: "07:55:48 AM"
     
@@ -90,7 +93,7 @@ const InfoBox = ({ info }) => {
 
                         <div className='flex justify-center items-center'>
 
-                            <FiSunrise className='text-2xl' /> <div className='text-lg'>{sunriseTime}</div>
+                            <FiSunrise className='text-2xl' /> <div className='text-lg'>{sunriseTime }</div>
                         </div>
                         <div className='flex justify-center items-center'>
 

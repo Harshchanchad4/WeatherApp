@@ -61,7 +61,7 @@ const Weather = () => {
       <SearchBox updateInfo={updateInfo} setLoading={setLoading} />
       {
         // console.log(loading);
-        loading ? <Spinner /> : <InfoBox info={weatherInfo} />
+        loading ? <Spinner /> : <InfoBox info={weatherInfo} loading={loading} />
       }
     </div>
 
