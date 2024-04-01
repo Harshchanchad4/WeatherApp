@@ -30,31 +30,24 @@ const InfoBox = ({ info }) => {
 
 
 
-    function convertUnixTimestamp(unixTimestamp) {
-
-
+    function convertUnixTimestampWithTimezone(unixTimestamp, timezoneOffset) {
         // Convert Unix timestamp to milliseconds
         let date = new Date(unixTimestamp * 1000);
-
-        // Get hours, minutes, and seconds from the Date object
-        let hours = date.getHours();
-        let minutes = date.getMinutes();
-        let seconds = date.getSeconds();
-
-        // Add leading zeros if necessary
-        hours = (hours < 10 ? "0" : "") + hours;
-        minutes = (minutes < 10 ? "0" : "") + minutes;
-        seconds = (seconds < 10 ? "0" : "") + seconds;
-
-        // Format the time as hh:mm:ss
-        let formattedTime = hours + ":" + minutes + ":" + seconds;
-
+    
+        // Adjust for timezone offset in minutes
+        let offsetInMilliseconds = timezoneOffset * 60 * 1000;
+        date.setTime(date.getTime() + offsetInMilliseconds);
+    
+        // Format the time using toLocaleTimeString() with the specified timezone
+        let formattedTime = date.toLocaleTimeString('en-US', { timeZone: 'UTC' });
+    
         return formattedTime;
     }
 
-
-    let sunriseTime = convertUnixTimestamp(info.sunRise);
-    let sunsetTime = convertUnixTimestamp(info.sunSet);
+    let sunriseTime = convertUnixTimestampWithTimezone(info.sunRise, info.timezone / 60);
+    let sunsetTime = convertUnixTimestampWithTimezone(info.sunSet, info.timezone / 60);
+    console.log(sunriseTime); // Output: "07:55:48 AM"
+    
 
     return (
 
